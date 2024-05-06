@@ -9,6 +9,8 @@ static void Main(string[] args)
         from o in list
         group o by o.City into gp
         select gp;
+
+    // var result = list.GroupBy(x => x.City);
     foreach (var item in result)
     {
         Console.WriteLine($"住在 : {item.Key}");
