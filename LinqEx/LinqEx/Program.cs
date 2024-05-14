@@ -21,8 +21,8 @@ class Program
         var totalQuantity = products.Sum(p => p.Quantity);
         Console.WriteLine($"商品的總數量: {totalQuantity}");
 
-        // 計算商品的平均數量
-        var averageQuantity = products.Average(p => p.Quantity);
+        // 計算商品的平均數量(四捨五入至個位數)
+        var averageQuantity = Math.Round(products.Average(p => p.Quantity));
         Console.WriteLine($"商品的平均數量: {averageQuantity}");
 
         // 找出最貴的商品
