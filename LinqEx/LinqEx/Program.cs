@@ -119,21 +119,31 @@ class Program
         int itemsPerPage = 4;
         int totalPages = (int)Math.Ceiling((double)products.Count / itemsPerPage);
 
-        for (int page = 1; page <= totalPages; page++)
+        while (true)
         {
-            Console.WriteLine($"\n第 {page} 頁:");
-
-            var pagedProducts = products
-                .Skip((page - 1) * itemsPerPage)
-                .Take(itemsPerPage);
-
-            foreach (var product in pagedProducts)
+            Console.WriteLine($"\n請輸入你想看的頁碼 (1 - {totalPages})，或輸入 0 退出:");
+            if (int.TryParse(Console.ReadLine(), out int page) && page >= 0 && page <= totalPages)
             {
-                Console.WriteLine(product);
-            }
+                if (page == 0)
+                {
+                    break;
+                }
 
-            Console.WriteLine("\n按下任意鍵繼續...");
-            Console.ReadKey();
+                Console.WriteLine($"\n第 {page} 頁:");
+
+                var pagedProducts = products
+                    .Skip((page - 1) * itemsPerPage)
+                    .Take(itemsPerPage);
+
+                foreach (var product in pagedProducts)
+                {
+                    Console.WriteLine(product);
+                }
+            }
+            else
+            {
+                Console.WriteLine("無效的頁碼，請輸入有效的頁碼。");
+            }
         }
     }
 }

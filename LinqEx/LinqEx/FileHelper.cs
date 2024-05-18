@@ -1,5 +1,4 @@
 ﻿using LinqEx;
-using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -24,7 +23,6 @@ public static class FileHelper
                     Price = decimal.Parse(fields[3]),
                     Category = fields[4]
                 };
-
 
                 products.Add(product);
             }
